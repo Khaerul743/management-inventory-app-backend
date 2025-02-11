@@ -16,8 +16,8 @@ app.use('/auth',authRoutes)
 app.use('/order',orderRoutes)
 app.use('/user',userRoutes)
 
-app.get('/',(req,res) => {
-    res.send("oke");
+app.post('/',(req,res) => {
+    res.send(req.body);
 })
 
 app.listen(process.env.PORT,'0.0.0.0',() => {
