@@ -16,6 +16,10 @@ app.use('/auth',authRoutes)
 app.use('/order',orderRoutes)
 app.use('/user',userRoutes)
 
+app.get('/',(req,res) => {
+    res.send("oke");
+})
+
 app.listen(process.env.PORT,'0.0.0.0',() => {
     console.log("server is running on port http://localhost:"+process.env.PORT)
 })
