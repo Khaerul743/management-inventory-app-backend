@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 const app = express();
 const productRoutes = require('./routes/productRoutes') 
 const authRoutes = require('./routes/authRoutes')
@@ -11,6 +12,7 @@ const cookieParser = require('cookie-parser')
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser())
+app.use(cors())
 app.use('/product',productRoutes);
 app.use('/auth',authRoutes)
 app.use('/order',orderRoutes)
