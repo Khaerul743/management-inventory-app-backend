@@ -7,6 +7,8 @@ const userRoutes = require('./routes/userRoutes')
 require('dotenv').config();
 const cookieParser = require('cookie-parser')
 
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser())
 app.use('/product',productRoutes);
@@ -14,6 +16,6 @@ app.use('/auth',authRoutes)
 app.use('/order',orderRoutes)
 app.use('/user',userRoutes)
 
-app.listen(process.env.PORT,() => {
+app.listen(process.env.PORT,'0.0.0.0',() => {
     console.log("server is running on port http://localhost:"+process.env.PORT)
 })
