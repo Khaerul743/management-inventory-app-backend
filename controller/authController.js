@@ -5,8 +5,6 @@ const  {registerValidation,loginValidation} = require('../config/validation');
 const {hashPass,comparePass} = require('../utils/bcrypt')
 const {response} = require('../utils/response')
 
-
-
 const register = async (req,res) => {
     const data = req.body;
     try {
