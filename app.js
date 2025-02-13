@@ -1,7 +1,7 @@
 const express = require('express');
 // const cors = require('cors')
 const {rateLimit} = require('express-rate-limit');
-const helmet = require('helmet')
+// const helmet = require('helmet')
 const app = express();
 const productRoutes = require('./routes/productRoutes') 
 const authRoutes = require('./routes/authRoutes')
@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser())
 app.use(limiter)
-app.use(helmet())
+// app.use(helmet())
 app.use('/product',productRoutes);
 app.use('/auth',authRoutes)
 app.use('/order',orderRoutes)
