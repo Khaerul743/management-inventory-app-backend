@@ -5,7 +5,7 @@ const {listProduct,addProduct,updateProduct,deleteProduct,detailProduct} = requi
 
 router.get('/',listProduct)
 router.get('/:id',verifyToken,authorizationRoles('admin','employee','customer'),detailProduct)
-router.post('/',verifyToken,authorizationRoles('admin','employee'),addProduct);
+router.post('/',addProduct);
 router.put('/:id',verifyToken,authorizationRoles('admin','employee'),updateProduct);
 router.delete('/:id',verifyToken,authorizationRoles('admin','employee'),deleteProduct);
 
