@@ -1,5 +1,5 @@
 const express = require('express');
-// const cors = require('cors')
+const cors = require('cors')
 const {rateLimit} = require('express-rate-limit');
 // const helmet = require('helmet')
 const app = express();
@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser())
 app.use(limiter)
+app.use(cors({origin:"http://127.0.0.1:5500"}))
 // app.use(helmet())
 app.use('/product',productRoutes);
 app.use('/auth',authRoutes)
