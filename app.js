@@ -21,10 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser())
 app.use(limiter)
-app.use(cors({
-    origin:"http://127.0.0.1:5500",
-    credentials:true,
-}))
+app.use(cors())
 // app.use(helmet())
 app.use('/product',productRoutes);
 app.use('/auth',authRoutes)
