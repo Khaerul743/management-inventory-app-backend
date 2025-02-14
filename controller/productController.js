@@ -12,8 +12,9 @@ const listProduct = async (req,res) => {
 }
 
 const addProduct = async (req,res) => {
+    console.log(req.body)
+    console.log("anjing")
     try{
-        console.log(req.body)
         const newProduct = await Product.create(req.body);
         return response(200,newProduct,"added data is successfully",res)
     }catch(error){
