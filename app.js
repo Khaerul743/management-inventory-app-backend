@@ -10,6 +10,7 @@ const userRoutes = require('./routes/userRoutes')
 require('dotenv').config();
 const cookieParser = require('cookie-parser')
 
+app.set('trust proxy', 1)
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max:100,
