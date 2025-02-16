@@ -3,6 +3,7 @@ const {response} = require('../utils/response')
 
 const showProfile = async (req,res) => {
     const user = await User.findByPk(req.user.id)
+    if(!user) return response(400," ","User not found",res)
     const {id,name,email} = user;
     return response(200,{id,name,email},"Get data user",res);
 }
