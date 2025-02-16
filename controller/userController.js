@@ -7,6 +7,7 @@ const showProfile = async (req,res) => {
         const {id,name,email} = user;
         return response(200,{id,name,email},"Get data user",res);
     } catch (error) {
+        console.log(error)
         return response(500,"error",error,res);
     }
 }
