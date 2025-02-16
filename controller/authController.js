@@ -37,7 +37,6 @@ const login = async (req,res) => {
         jwt.sign({id:user.id,role:user.role},process.env.SECRET_KEY,{expiresIn:'1h'},(err,token) => {
             res.cookie('token',token,{
                 httpOnly:true,
-                secure: false,
             })
             return response(200,{
                 name : user.name,
