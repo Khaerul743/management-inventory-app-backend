@@ -35,7 +35,10 @@ const login = async (req,res) => {
         if(!validPassword) return response(400,0,"Invalid password",res)
         
         jwt.sign({id:user.id,role:user.role},process.env.SECRET_KEY,{expiresIn:'1h'},(err,token) => {
-            res.cookie('token',token,{httpOnly:true})
+            res.cookie('token',token,{
+                httpOnly:true,
+                secure: false,
+            })
             return response(200,{
                 name : user.name,
                 email:user.email,
