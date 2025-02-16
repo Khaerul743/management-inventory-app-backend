@@ -35,9 +35,16 @@ const login = async (req,res) => {
         if(!validPassword) return response(400,0,"Invalid password",res)
         
         jwt.sign({id:user.id,role:user.role},process.env.SECRET_KEY,{expiresIn:'1h'},(err,token) => {
+            if (err) {
+                return res.status(500).json({ message: "Token generation failed!" });
+            }
             res.cookie('token',token,{
-                httpOnly:true
+                httpOnly:true,
+                secure:false,
+                sameSite:"Lax",
+                maxAge: 24 * 60 * 60 * 1000 // Berlaku 1 hari
             })
+            console.log("Set-Cookie:", `token=${token}`);
             return response(200,{
                 name : user.name,
                 email:user.email,
