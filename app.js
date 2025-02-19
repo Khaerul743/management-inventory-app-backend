@@ -22,10 +22,10 @@ const limiter = rateLimit({
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser())
-app.use(limiter)
+// app.use(limiter)
 app.use(
   cors({
-    origin: "http://127.0.0.1:5500", // Sesuaikan dengan FE
+    origin: 'https://6vfkw0gd-5500.asse.devtunnels.ms', // Sesuaikan dengan FE
     credentials: true, // Wajib biar cookie bisa dikirim
   })
 );
@@ -35,13 +35,6 @@ app.use('/product',productRoutes);
 app.use('/auth',authRoutes)
 app.use('/order',orderRoutes)
 app.use('/user',userRoutes)
-
-app.get("/debug-cookie", (req, res) => {
-    console.log({user:req.user})
-    console.log("Cookies from client:", req.cookies);
-    res.json({ cookies: req.cookies });
-});
-
 
 app.post('/',(req,res) => {
     res.send(req.body);

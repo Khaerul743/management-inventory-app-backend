@@ -25,10 +25,10 @@ const addProduct = async (req,res) => {
 const updateProduct = async (req,res) => {
     try{
         const id = req.params.id
-        const {nama,kategory,stok,harga} = req.body;
+        const {nama,kategori,stok,harga} = req.body;
         const [updated,data] = await Product.update({
             nama : nama,
-            kategory: kategory,
+            kategori: kategori,
             stok:stok,
             harga : harga,
         },{

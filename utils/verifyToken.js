@@ -3,8 +3,6 @@ const {response} = require('./response')
 require('dotenv').config()
 
 const verifyToken = (req,res,next) => {
-    console.log("kontol")
-    console.log(req.cookies)
     const token = req.cookies.token;
     if(!token) return response(400,"error","Invalid Token",res)
     
@@ -13,6 +11,7 @@ const verifyToken = (req,res,next) => {
         req.user = verified;
         next()
     } catch (error) {
+        console.log(error)
         return response(500,"error","Invalid to verify token",res);
     }
 }

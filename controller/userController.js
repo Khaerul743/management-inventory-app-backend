@@ -4,9 +4,9 @@ const {response} = require('../utils/response')
 const showProfile = async (req,res) => {
     try { 
         const user = await User.findByPk(req.user.id)
-        // if(!user) return response(400," ","User not found",res)
-        const {id,name,email} = user;
-        return response(200,{id,name,email},"Get data user",res);
+        if(!user) return response(400," ","User not found",res)
+        const {id,name,email,role} = user;
+        return response(200,{id,name,email,role},"Get data user",res);
     } catch (error) {
         console.log(error)
         return response(500,"error",error,res);
@@ -21,6 +21,18 @@ const showAllUser = async (req,res) => {
         
     } catch (error) {
         return response(500,0,error,res)
+    }
+}
+
+const detailUser = async(req,res) => {
+    try {
+        const userId = req.params.id
+        const getUser = await User.findByPk(userId)
+        if(!getUser) return response(404,0,"User not found",res)
+        const {name,email,role} = getUser
+        return response(200,{name,email,role},"Get Detail User",res)
+    } catch (error) {
+        return response(500,0,"error",res)
     }
 }
 
@@ -53,4 +65,4 @@ const deleteUser = async (req,res) => {
     }
 }
 
-module.exports = {showProfile,showAllUser,updateUser,deleteUser}
+module.exports = {showProfile,showAllUser,detailUser,updateUser,deleteUser}

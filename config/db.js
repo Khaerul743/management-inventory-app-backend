@@ -1,7 +1,9 @@
 const {Sequelize,DataTypes} = require('sequelize');
 require('dotenv').config();
 
-const sequelize = new Sequelize(`mysql://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT || 3307}/${process.env.DB_NAME}`)
+const sequelize = new Sequelize(`mysql://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT || 3307}/${process.env.DB_NAME}`,{
+    logging:false
+})
 
 
 const testConnection = async () => {
